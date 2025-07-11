@@ -1,0 +1,12 @@
+productId: "coins-purchase"
+productName: "Coin Bundle"
+productDescription: "Purchase coins to use in the server!"
+price: 500
+callbackDelivery: "ONLY_WHEN_PLAYER_ONLINE"
+repeatablePurchase: true
+# max 5 purchases
+permission: "plexpurchases.coins-purchase.times.5"
+actions:
+  success: [
+      - "/givecoins <player_name> 1000"
+  ] 

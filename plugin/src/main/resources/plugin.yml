@@ -1,0 +1,12 @@
+name: PlexPurchases
+version: '${version}'
+main: net.plexprison.plexpurchases.PlexPurchases
+api-version: '1.21'
+authors: [ PlexPrison, BillyDotWS ]
+description: A Mineplex Studio Paper plugin for handling purchases
+website: https://github.com/PlexPrison/PlexPurchases
+commands:
+  store:
+    description: Access the store to buy items and view purchases
+    usage: /<command> [buy|purchases|info]
+    aliases: [ buy ]

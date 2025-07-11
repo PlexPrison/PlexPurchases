@@ -1,4 +1,4 @@
-![PlexPurchases Header](https://i.imgur.com/R5UJhEN.png)
+![PlexPurchases Header](https://i.imgur.com/ZBSXcgt.png)
 
 PlexPurchases is a plugin & website that enhances Mineplex's built in Purchase system. It allows developers to quickly
 create products in a web UI, and generate an in-game UI to reflect their configuration.

@@ -1,0 +1,17 @@
+subscriptionId: "power-up-subscription-1"
+subscriptionName: "Monthly Power-Up"
+subscriptionDescription: "Get a bonus power-up every month by purchasing this subscription!"
+price: 100
+subscriptionBasis: "MONTHLY"
+callbackDelivery: "ONLY_WHEN_PLAYER_ONLINE"
+dependency: "basic-membership"
+actions:
+  success: [
+      - "/rank <player_name> add premium 30d"
+  ]
+  expire: [
+      - "/rank <player_name> remove premium"
+  ]
+  renew: [
+      - "/rank <player_name> extend premium 30d"
+  ] 
