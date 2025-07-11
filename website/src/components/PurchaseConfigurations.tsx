@@ -5,6 +5,7 @@ import { DeliveryType } from '../types/config';
 import { Button, Card, Modal, List, Tag, Typography, Space, Empty, Row, Col, Statistic, Upload, message } from 'antd';
 import { PlusOutlined, ExportOutlined, DeleteOutlined, CrownOutlined, EyeOutlined, UploadOutlined } from '@ant-design/icons';
 import * as yaml from 'js-yaml';
+import { minecraftItems } from '../data/minecraftItems';
 
 // Delivery type mapping for user-friendly labels
 const deliveryTypeLabels = {
@@ -115,7 +116,10 @@ export default function PurchaseConfigurations({
               renew: config.actions?.renew || ['']
             },
             dependency: config.dependency || '',
-            permission: config.permission || ''
+            dependencyAmount: config.dependencyAmount || 1,
+            permission: config.permission || '',
+            hideIfNoPermission: config.hideIfNoPermission || false,
+            displayItem: config.displayItem || ''
           };
           validConfigurations.push(validatedConfig);
         }
@@ -250,7 +254,53 @@ export default function PurchaseConfigurations({
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <CrownOutlined style={{ fontSize: '24px', color: '#faad14' }} />
+                    {config.displayItem ? (
+                      (() => {
+                        const item = minecraftItems.find(i => i.id === config.displayItem);
+                        return item?.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.displayName}
+                            style={{ 
+                              width: '32px', 
+                              height: '32px', 
+                              objectFit: 'contain',
+                              borderRadius: '4px'
+                            }}
+                            onError={(e) => {
+                              // Fallback to text if image fails to load
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const fallback = target.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = 'flex';
+                            }}
+                          />
+                        ) : (
+                          <div style={{ 
+                            width: '32px', 
+                            height: '32px', 
+                            backgroundColor: '#f0f0f0',
+                            borderRadius: '4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '12px',
+                            fontWeight: 'bold',
+                            color: '#666'
+                          }}>
+                            {config.displayItem.charAt(0)}
+                          </div>
+                        );
+                      })()
+                    ) : null}
+                    <CrownOutlined 
+                      className="crown-icon"
+                      style={{ 
+                        fontSize: '24px', 
+                        color: '#faad14',
+                        display: config.displayItem ? 'none' : 'block'
+                      }} 
+                    />
                   </div>
                 }
                 title={config.subscriptionId && config.subscriptionName ? config.subscriptionName : config.productName}
@@ -419,6 +469,55 @@ export default function PurchaseConfigurations({
                   <Statistic title="Permission" value={selectedPurchase.permission} />
                 </Col>
               </Row>
+              {selectedPurchase.displayItem && (
+                <Row gutter={16} style={{ marginTop: '16px' }}>
+                  <Col span={12}>
+                    <Statistic 
+                      title="Display Item" 
+                      value={selectedPurchase.displayItem}
+                      prefix={
+                        (() => {
+                          const item = minecraftItems.find(i => i.id === selectedPurchase.displayItem);
+                          return item?.imageUrl ? (
+                            <img 
+                              src={item.imageUrl} 
+                              alt={item.displayName}
+                              style={{ 
+                                width: '16px', 
+                                height: '16px', 
+                                objectFit: 'contain',
+                                borderRadius: '2px'
+                              }}
+                              onError={(e) => {
+                                // Fallback to text if image fails to load
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const fallback = target.nextElementSibling as HTMLElement;
+                                if (fallback) fallback.style.display = 'flex';
+                              }}
+                            />
+                          ) : (
+                            <div style={{ 
+                              width: '16px', 
+                              height: '16px', 
+                              backgroundColor: '#f0f0f0',
+                              borderRadius: '2px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '8px',
+                              fontWeight: 'bold',
+                              color: '#666'
+                            }}>
+                              {selectedPurchase.displayItem.charAt(0)}
+                            </div>
+                          );
+                        })()
+                      }
+                    />
+                  </Col>
+                </Row>
+              )}
             </Card>
           </div>
         )}

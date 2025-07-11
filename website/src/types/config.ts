@@ -37,5 +37,8 @@ export interface ConfiguredPlexPurchasesObject {
   // plex purchases specific
   actions: PurchaseActions;
   dependency: string;
+  dependencyAmount: number;
   permission: string;
+  hideIfNoPermission: boolean;
+  displayItem: string;
 } 

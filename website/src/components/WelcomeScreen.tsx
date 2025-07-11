@@ -87,7 +87,10 @@ export default function WelcomeScreen({ configurationsCount, onImportConfigurati
               renew: config.actions?.renew || ['']
             },
             dependency: config.dependency || '',
-            permission: config.permission || ''
+            dependencyAmount: config.dependencyAmount || 1,
+            permission: config.permission || '',
+            hideIfNoPermission: config.hideIfNoPermission || false,
+            displayItem: config.displayItem || ''
           };
           validConfigurations.push(validatedConfig);
         }
