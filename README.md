@@ -7,12 +7,18 @@ It also allows for simple, command based action setup, similar to that of Tebex.
 
 ## Adding to your project
 
+### Step 1: Install
+
 We've designed this to be as simple to use as possible, drag and drop
 the plugin using our [latest release](https://github.com/PlexPrison/PlexPurchases/releases) into a folder called
 `external-plugins` within your Mineplex project.
 
+### Step 2: Configure
+
+![Web UI](https://i.imgur.com/o17Mb5x.png)
+
 Then, [head to our setup UI](https://plexpurchases-setup.plexprison.net) and set-up your purchases! (follow the
-on-screen instructions). You'll then need to unzip the generated zip file and run the bash script generated.
+on-screen instructions). You'll then need to unzip the generated zip file **into your project folder** and run the bash script generated (inside of your project folder).
 
 ## Player Usage
 
@@ -36,6 +42,20 @@ use, and quick to setup experience.
 #### Building
 
 #### Running locally
+
+1. Navigate to the `website` directory:
+   ```sh
+   cd website
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm run dev
+   ```
+4. Open the provided local URL in your browser (usually http://localhost:5173)
 
 ### Spigot Plugin
 
