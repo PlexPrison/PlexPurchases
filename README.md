@@ -17,7 +17,7 @@ the plugin using our [latest release](https://github.com/PlexPrison/PlexPurchase
 
 ![Web UI](https://i.imgur.com/o17Mb5x.png)
 
-Then, [head to our setup UI](https://plexpurchases-setup.plexprison.net) and set-up your purchases! (follow the
+Then, [head to our setup UI](https://plexpurchases-setup.plexprison.com) and set-up your purchases! (follow the
 on-screen instructions). You'll then need to unzip the generated zip file **into your project folder** and run the bash script generated (inside of your project folder).
 
 ## Player Usage
