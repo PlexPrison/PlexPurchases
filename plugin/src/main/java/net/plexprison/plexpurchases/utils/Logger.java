@@ -1,6 +1,5 @@
 package net.plexprison.plexpurchases.utils;
 
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 
 /**
@@ -8,73 +7,73 @@ import org.bukkit.plugin.Plugin;
  * Uses plugin-specific logger for better contextual information
  */
 public class Logger {
-    
+
     private static Plugin plugin;
-    
+
     /**
      * Initialize the logger with the plugin instance
      *
      * @param pluginInstance The plugin instance
      */
     public static void initialize(final Plugin pluginInstance) {
-        plugin = pluginInstance;
+        Logger.plugin = pluginInstance;
     }
-    
+
     /**
      * Log an INFO level message
      *
      * @param message The message to log
      */
     public static void info(final String message) {
-        if (plugin != null) {
-            plugin.getLogger().info(message);
+        if (Logger.plugin != null) {
+            Logger.plugin.getLogger().info("ℹ️ " + message);
         }
     }
-    
+
     /**
      * Log a WARNING level message
      *
      * @param message The message to log
      */
     public static void warning(final String message) {
-        if (plugin != null) {
-            plugin.getLogger().warning(message);
+        if (Logger.plugin != null) {
+            Logger.plugin.getLogger().warning("⚠️ " + message);
         }
     }
-    
+
     /**
      * Log an ERROR level message
      *
      * @param message The message to log
      */
     public static void error(final String message) {
-        if (plugin != null) {
-            plugin.getLogger().severe(message);
+        if (Logger.plugin != null) {
+            Logger.plugin.getLogger().severe("❌ " + message);
         }
     }
-    
+
     /**
      * Log a DEBUG level message (only if debug is enabled)
      *
      * @param message The message to log
      */
     public static void debug(final String message) {
-        if (plugin != null) {
-            plugin.getLogger().info("[DEBUG] " + message);
+        if (Logger.plugin != null) {
+            Logger.plugin.getLogger().info("[DEBUG] " + message);
         }
     }
-    
+
     /**
      * Log a SUCCESS level message (green colored in console)
      *
      * @param message The message to log
      */
     public static void success(final String message) {
-        if (plugin != null) {
-            plugin.getLogger().info(ChatColor.GREEN + message + ChatColor.RESET);
+        if (Logger.plugin != null) {
+            Logger.plugin.getLogger().info("✅ " + message);
         }
     }
-    
+
     /**
      * Log a formatted message with parameters
      *

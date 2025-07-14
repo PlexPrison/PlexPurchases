@@ -34,17 +34,25 @@ public class ConfiguredPlexPurchasesObjectHolder {
     }
 
     /**
-     * Loads all YAML files from the assets/purchases directory and parses them into ConfiguredPlexPurchasesObject instances.
+     * Loads all YAML files from the game-config/purchases directory relative to the plugins folder and parses them into ConfiguredPlexPurchasesObject instances.
      * This method should be called during plugin initialization.
      */
     public void loadPurchases() {
         Logger.info("Starting to load purchase configurations...");
 
-        // Create the purchases directory if it doesn't exist
-        final File purchasesDir = new File(this.plugin.getDataFolder(), "assets/purchases");
+        // Get the plugins folder and navigate to its parent directory
+        final File pluginsFolder = this.plugin.getDataFolder().getParentFile();
+        final File parentDir = pluginsFolder.getParentFile();
+        final File gameConfigDir = new File(parentDir, "game-config");
+        final File purchasesDir = new File(gameConfigDir, "purchases");
+
+        if (!gameConfigDir.exists()) {
+            Logger.warning("game-config directory does not exist at: " + gameConfigDir.getAbsolutePath() + ", this plugin is useless without this!");
+            return;
+        }
+
         if (!purchasesDir.exists()) {
-            purchasesDir.mkdirs();
-            Logger.warning("assets/purchases directory is empty in your project, this plugin is useless without this!");
+            Logger.warning("purchases directory does not exist at: " + purchasesDir.getAbsolutePath() + ", this plugin is useless without this!");
             return;
         }
 

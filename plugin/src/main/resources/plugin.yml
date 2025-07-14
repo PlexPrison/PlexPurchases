@@ -1,8 +1,9 @@
 name: PlexPurchases
-version: '${version}'
+version: '1.0.0'
 main: net.plexprison.plexpurchases.PlexPurchases
-api-version: '1.21'
+api-version: '1.20'
 authors: [ PlexPrison, BillyDotWS ]
+dependencies: [ StudioEngine ]
 description: A Mineplex Studio Paper plugin for handling purchases
 website: https://github.com/PlexPrison/PlexPurchases
 commands:
